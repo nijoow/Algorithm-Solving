@@ -21,6 +21,5 @@ function solution(info, edges) {
     }
 
     dfs(0,[0,0],[])
-console.log(graph)
     return answer
 }
