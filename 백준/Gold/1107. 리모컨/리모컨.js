@@ -22,10 +22,14 @@ const solution = (N, input) => {
   } else {
     const breakdown = input[1].split(" ").map((el) => +el);
     let result = Math.abs(100 - N);
+    let closeChannelUp = null;
+    let closeChannelDown = null;
+    let up = N,
+      down = N;
 
-    for (let i = 0; i <= 1000000; i++) {
+    while (!closeChannelUp && Math.abs(up - N) <= result) {
       if (
-        i
+        up
           .toString()
           .split("")
           .reduce(
@@ -33,8 +37,35 @@ const solution = (N, input) => {
               breakdown.includes(Number(element)) ? false : acc,
             true
           )
-      )
-        result = Math.min(result, Math.abs(i - N) + i.toString().length);
+      ) {
+        closeChannelUp = up;
+      }
+      up++;
+    }
+    while (!closeChannelDown && down >= 0) {
+      if (
+        down
+          .toString()
+          .split("")
+          .reduce(
+            (acc, element) =>
+              breakdown.includes(Number(element)) ? false : acc,
+            true
+          )
+      ) {
+        closeChannelDown = down;
+      }
+      down--;
+    }
+    if (closeChannelUp !== null) {
+      closeChannelUpCount =
+        Math.abs(N - closeChannelUp) + closeChannelUp.toString().length;
+      result = Math.min(result, closeChannelUpCount);
+    }
+    if (closeChannelDown !== null) {
+      closeChannelDownCount =
+        Math.abs(N - closeChannelDown) + closeChannelDown.toString().length;
+      result = Math.min(result, closeChannelDownCount);
     }
 
     console.log(result);
