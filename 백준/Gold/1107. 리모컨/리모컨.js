@@ -24,8 +24,8 @@ const solution = (N, input) => {
     let result = Math.abs(100 - N);
     let closeChannelUp = null;
     let closeChannelDown = null;
-    let up = N,
-      down = N;
+    let up = N;
+    let down = N;
 
     while (!closeChannelUp && Math.abs(up - N) <= result) {
       if (
@@ -39,6 +39,9 @@ const solution = (N, input) => {
           )
       ) {
         closeChannelUp = up;
+        closeChannelUpCount =
+          Math.abs(N - closeChannelUp) + closeChannelUp.toString().length;
+        result = Math.min(result, closeChannelUpCount);
       }
       up++;
     }
@@ -54,18 +57,11 @@ const solution = (N, input) => {
           )
       ) {
         closeChannelDown = down;
+        closeChannelDownCount =
+          Math.abs(N - closeChannelDown) + closeChannelDown.toString().length;
+        result = Math.min(result, closeChannelDownCount);
       }
       down--;
-    }
-    if (closeChannelUp !== null) {
-      closeChannelUpCount =
-        Math.abs(N - closeChannelUp) + closeChannelUp.toString().length;
-      result = Math.min(result, closeChannelUpCount);
-    }
-    if (closeChannelDown !== null) {
-      closeChannelDownCount =
-        Math.abs(N - closeChannelDown) + closeChannelDown.toString().length;
-      result = Math.min(result, closeChannelDownCount);
     }
 
     console.log(result);
