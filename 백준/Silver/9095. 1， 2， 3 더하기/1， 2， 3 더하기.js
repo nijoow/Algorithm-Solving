@@ -12,19 +12,23 @@ readline
     else input.push(+line);
   })
   .on("close", function () {
-    solution(T, input);
+    solution(input);
     process.exit();
   });
 
-const solution = (T, input) => {
-  const dp = Array.from(Array(11), () => 0);
-  dp[0] = 1;
-  dp[1] = 1;
-  dp[2] = 2;
-  for (let i = 3; i <= 10; i++) {
-    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
+const solution = (input) => {
+  const result = [];
+  const arr = Array.from(Array(12), () => 0);
+  arr[0] = 0;
+  arr[1] = 1;
+  arr[2] = 2;
+  arr[3] = 4;
+  for (let i = 4; i < 12; i++) {
+    arr[i] = arr[i - 1] + arr[i - 2] + arr[i - 3];
   }
+  input.forEach((n) => {
+    result.push(arr[n]);
+  });
 
-  const result = input.map((value) => dp[value]);
   console.log(result.join("\n"));
 };
