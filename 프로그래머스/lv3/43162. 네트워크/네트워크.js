@@ -7,10 +7,8 @@ function solution(n, computers) {
                 if(computers[n][i]===1 && check[i]===0 && i!==n){
                 check[i] = 1
                  L = dfs(i,L+1)    
-                }
-                    
+                }      
             }
-        
          return L
     }
     for(let i=0;i<n;i++){
