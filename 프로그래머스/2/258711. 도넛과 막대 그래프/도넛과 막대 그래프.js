@@ -6,7 +6,7 @@ function solution(edges) {
     edges.forEach(([a,b])=>{
         outArr[a]++
         inArr[b]++
-    })
+    }) 
 
     let start = null
     let graph = {donut:0,bar:0,eight:0}
