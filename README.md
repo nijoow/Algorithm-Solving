@@ -1,4 +1,3 @@
-# 알고리즘 문제 풀이
+# Algorithm-Solving
 
-- 백준 문제 풀이 기록
-- [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub)를 이용한 자동 업로드
+백준과 프로그래머스 알고리즘 문제 풀이 기록입니다. (BaekjoonHub 자동 업로드)
